@@ -1,0 +1,36 @@
+stages:
+    - test-infa
+    - build-infa
+    - deploy-infa
+
+test:
+    stage: test-infa
+    script:
+        - whoami
+        - pwd
+        - ls -l
+        - sudo su huancd -c "cd /infa/aks/infa/; ls -l && whoami"
+    tags:
+        - dev-server
+
+1_init:
+    stage: build-infa
+    when: manual
+    script:
+        - sudo su huancd -c "cd /infa/aks/infa/; terraform validate; terraform init"
+    tags:
+        - dev-server
+2_plan:
+    stage: build-infa
+    when: manual
+    script:
+        - sudo su huancd -c "cd /infa/aks/infa/; terraform plan"
+    tags:
+        - dev-server
+3_apply:
+    stage: build-infa
+    when: manual
+    script:
+        - sudo su huancd -c "cd /infa/aks/infa/; terraform apply --auto-approve"
+    tags:
+        - dev-server
