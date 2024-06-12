@@ -1,6 +1,5 @@
 # CI/CD Infa AKS on azure 
-Demo: 
-https://www.youtube.com/watch?v=irS6eOkAsFc&t=27s
+
 
 1. Developer infa
    
